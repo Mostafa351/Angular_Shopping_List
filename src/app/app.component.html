@@ -1,21 +1,9 @@
-<h1 class="text-center">بسم الله الرحمن الرحيم</h1>
-<br /><br />
-<hr />
-
+<app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <button (click)="togg()">Display Details</button>
-      <p *ngIf="tog">Mostafaaaaa</p>
-      <div style="background-color: rgb(147, 155, 152)">
-        <p
-          *ngFor="let d of stam; let i = index"
-          [ngStyle]="{ 'background-color': i > 5 ? 'blue' : 'transparent' }"
-          [ngClass]="{ white: i <= 5 }"
-        >
-          {{ d }}
-        </p>
-      </div>
+    <div class="col-md-12">
+      <app-recipes></app-recipes>
+      <app-shopping-list></app-shopping-list>
     </div>
   </div>
 </div>

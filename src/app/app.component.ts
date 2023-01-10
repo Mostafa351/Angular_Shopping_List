@@ -7,11 +7,5 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tog: boolean = false;
-  stam: Date[] = [];
 
-  togg() {
-    this.tog = !this.tog;
-    this.stam.push(new Date())
-  }
 }
