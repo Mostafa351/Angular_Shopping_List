@@ -7,5 +7,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  recievedData = 'Recipes';
+  onLoadfeature(event: string) {
+    this.recievedData = event;
+  }
 }
