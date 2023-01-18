@@ -1,9 +1,13 @@
-<app-header (emmitFeature)="onLoadfeature($event)"></app-header>
+<app-header (emmitFeature)="onNavigation($event)"></app-header>
+<!-- directly assign the property -->
+<!-- <app-header (emmitFeature)="loadedFeature = $event"></app-header> -->
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="recievedData === 'Recipes' "></app-recipes>
-      <app-shopping-list *ngIf="recievedData !== 'Recipes' "></app-shopping-list>
+      <app-recipes *ngIf="loadedFeature === 'Recipes'"></app-recipes>
+      <app-shopping-list
+        *ngIf="loadedFeature !== 'Recipes'"
+      ></app-shopping-list>
     </div>
   </div>
 </div>

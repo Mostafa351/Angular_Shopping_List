@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RecipesService } from 'src/app/Services/recipes.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
+  @Input() viewDetails: Recipe = { name: '', description: '', imagePath: '', ingredients: [] };
+  constructor(private recipeService: RecipesService) { }
 
+
+  onAddToShoppingList() {
+    this.recipeService.addIngredientsToShoppingList(this.viewDetails.ingredients);
+  }
 }
