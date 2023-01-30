@@ -12,8 +12,13 @@ export class RecipesService {
     new Recipe(
       'salad', 'food', 'https://www.cookipedia.co.uk/wiki/images/e/ea/Gazpacho_ligero_con_mostaza_recipe.jpg', [new Ingredient('bread', 2), new Ingredient('sugar', 5)]),
     new Recipe('salsssssssssssssssad', 'food', 'https://www.cookipedia.co.uk/wiki/images/e/ea/Gazpacho_ligero_con_mostaza_recipe.jpg',
-      [new Ingredient('bread', 2), new Ingredient('sugar', 5)]),
+      [new Ingredient('coca', 12), new Ingredient('laban', 15)]),
   ];
+  getRecipie(index: number) {
+    return this.recipes[index];
+  }
+
+
   getRecipies() {
     // so we pass a copy only from our property not the reference to it
     return this.recipes.slice();
