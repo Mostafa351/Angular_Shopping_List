@@ -1,23 +1,23 @@
+import { Subject } from 'rxjs';
 import { Ingredient } from './../shared/ingredient.model';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from "../recipes/recipe.model";
 import { ShoppingListService } from './shopping-list.service';
 
 @Injectable()
 export class RecipesService {
-  recipeSelected = new EventEmitter<Recipe>();
+  recipeChanged = new Subject();
   constructor(private shoppingListService: ShoppingListService) { }
 
   private recipes: Recipe[] = [
     new Recipe(
-      'salad', 'food', 'https://www.cookipedia.co.uk/wiki/images/e/ea/Gazpacho_ligero_con_mostaza_recipe.jpg', [new Ingredient('bread', 2), new Ingredient('sugar', 5)]),
+      'salad', 'food', 'https://www.cookipedia.co.uk/wiki/images/e/ea/Gazpacho_ligero_con_mostaza_recipe.jpg', [new Ingredient('bread', 2), new Ingredient('sugar', 5), new Ingredient('laban', 1)]),
     new Recipe('salsssssssssssssssad', 'food', 'https://www.cookipedia.co.uk/wiki/images/e/ea/Gazpacho_ligero_con_mostaza_recipe.jpg',
-      [new Ingredient('coca', 12), new Ingredient('laban', 15)]),
+      [new Ingredient('coca', 12), new Ingredient('laban', 15), new Ingredient('labdddddan', 15)]),
   ];
   getRecipie(index: number) {
     return this.recipes[index];
   }
-
 
   getRecipies() {
     // so we pass a copy only from our property not the reference to it
@@ -25,5 +25,20 @@ export class RecipesService {
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  onAddRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+
+  }
+  onUpdateRecipe(index: number, recipe: Recipe) {
+    this.recipes[index] = recipe;
+    this.recipeChanged.next(this.recipes.slice());
+
+  }
+  ondeleteRecipe(index: number) {
+    this.recipes.splice(index,1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }

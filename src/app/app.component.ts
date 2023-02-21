@@ -8,8 +8,8 @@ import { Recipe } from './recipes/recipe.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loadedFeature = 'Recipes';
+  // loadedFeature = 'Recipes';
   onNavigation(feature: string) {
-    this.loadedFeature = feature;
+    // this.loadedFeature = feature;
   }
 }
